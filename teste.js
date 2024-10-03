@@ -1,9 +1,11 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
+const puppeteer = require("puppeteer");
+const fs = require("fs");
 
-async function gerarImagem() {
+(async () => {
+  // Coloque seu código de teste abaixo:
+
   // Lê o arquivo HTML (ou você pode gerar dinamicamente o HTML com as variáveis)
-  var teste = 'luciano'
+  var teste = "luciano";
   const html = `
   <html>
     <style>
@@ -41,16 +43,13 @@ async function gerarImagem() {
   await page.setContent(html);
   await page.setViewport({ width: 1200, height: 800, deviceScaleFactor: 2 });
 
-
   // Seleciona a div pela classe 'imagem'
-  const div = await page.$('.imagem');
+  const div = await page.$(".imagem");
 
   // Tira o screenshot da div selecionada
-  await div.screenshot({ path: 'imagem.png', omitBackground: true });
+  await div.screenshot({ path: "imagem.png", omitBackground: true });
 
-  console.log('Imagem gerada com sucesso!');
+  console.log("Imagem gerada com sucesso!");
 
   await browser.close();
-}
-
-gerarImagem();
+})();
